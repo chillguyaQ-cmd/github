@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikeHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0a0a0a;--bg-light:#151010;--card:#1a1414;--card-hover:#251b1b;--accent:#ff3e3e;--text:#f5f5f5;--text-dim:#8e7e7e;--border:#2a1f1f}body{font-family:'Inter', sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow:hidden}#starfield{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}.support-wrapper{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:8px;background:rgba(20, 15, 15, 0.9);backdrop-filter: blur(12px);-webkit-backdrop-filter: blur(12px);padding:8px 16px;border-radius:20px;border:1px solid rgba(255, 62, 62, 0.2);font-size:12px;color:var(--text-dim);box-shadow:0 4px 15px rgba(0, 0, 0, 0.4)}.top-bar{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;margin:80px auto 0;max-width:1200px;background:rgba(15, 10, 10, 0.7);backdrop-filter: blur(12px);-webkit-backdrop-filter: blur(12px);border:1px solid rgba(255, 62, 62, 0.15);border-radius:16px}.logo-small{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px}.top-icons{display:flex;gap:16px;align-items:center}.top-icons a,.top-icons i{color:var(--text-dim);font-size:16px;cursor:pointer;transition:color 0.2s;text-decoration:none}.top-icons a:hover,.top-icons i:hover{color:var(--accent)}.main-content{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;padding:60px 20px}.logo-big{font-size:64px;font-weight:800;color:var(--text);letter-spacing:-2px;margin-bottom:12px}.tagline{font-size:16px;color:var(--text-dim);font-style:italic;margin-bottom:40px}.search-container{width:100%;max-width:420px;margin-bottom:40px;position:relative}.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:14px;z-index:1}.search-box{width:100%;padding:14px 20px 14px 42px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);outline:none;transition:border-color 0.2s}.search-box:focus{border-color:var(--accent)}.nav-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;max-width:600px;width:100%}.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px 16px;background:var(--card);border:1px solid var(--border);border-radius:16px;text-decoration:none;color:var(--text);transition:all 0.2s ease}.nav-item:hover{background:var(--card-hover);border-color:var(--accent);transform:translateY(-3px);box-shadow:0 0 15px rgba(255, 62, 62, 0.1)}.nav-item i{font-size:22px;color:var(--text)}.nav-item:hover i{color:var(--accent)}.nav-label{font-size:14px;font-weight:500}.secondary-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:8px;background:rgba(15, 10, 10, 0.85);padding:8px;border-radius:24px;border:1px solid rgba(255, 62, 62, 0.15)}.nav-pill{padding:8px 16px;border-radius:16px;text-decoration:none;color:var(--text-dim);font-size:13px;transition:0.2s}.nav-pill:hover{color:var(--text);background:rgba(255, 62, 62, 0.1)}.nav-pill.active{background:var(--accent);color:#000;font-weight:600}.panic-btn{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:8px;cursor:pointer;z-index:101;font-weight:600;transition:0.2s}.panic-btn:hover{background:var(--accent);color:#000}.panic-overlay{position:fixed;inset:0;background:#fff;z-index:2000;display:none;padding:50px;color:#000;overflow-y:auto}.panic-overlay.active{display:block}.switch{position:relative;display:inline-block;width:34px;height:20px}.switch input{opacity:0;width:0;height:0}.slider{position:absolute;cursor:pointer;inset:0;background-color:var(--border);transition:0.4s;border-radius:34px}.slider:before{position:absolute;content:"";height:14px;width:14px;left:3px;bottom:3px;background-color:white;transition:0.4s;border-radius:50%}input:checked + .slider{background-color:var(--accent)}input:checked + .slider:before{transform:translateX(14px);background-color:#000}@media (max-width: 640px){.nav-grid{grid-template-columns:repeat(2, 1fr)}.logo-big{font-size:48px}.top-bar{margin:80px 10px 0}}
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+
+    <div class="support-wrapper">
+        <i class="fas fa-heart" style="color: var(--accent)"></i>
+        <span>enable ads (please)</span>
+        <label class="switch">
+            <input type="checkbox" id="adBypassTrigger">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="top-bar">
+        <div class="logo-small">nikehub</div>
+        <div class="top-icons">
+            <a href="#" target="_blank" class="link-games"><i class="fas fa-gamepad"></i></a>
+            <a href="#" target="_blank" class="link-ai"><i class="fas fa-robot"></i></a>
+            <a href="#" target="_blank" class="link-movies"><i class="fas fa-film"></i></a>
+            <a href="#" target="_blank" class="link-algebra"><i class="fas fa-link"></i></a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="logo-big">nikehub</h1>
+        <p class="tagline">welcome to the best unbl*ocked games site...</p>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-box" placeholder="search here..." id="searchInput">
+        </div>
+
+        <div class="nav-grid">
+            <a href="#" target="_blank" class="nav-item link-games">
+                <i class="fas fa-gamepad"></i>
+                <span class="nav-label">games</span>
+            </a>
+            <a href="#" target="_blank" class="nav-item link-movies">
+                <i class="fas fa-film"></i>
+                <span class="nav-label">movies</span>
+            </a>
+            <a href="https://discord.gg/Y4uMau4dGy" target="_blank" class="nav-item">
+                <i class="fa-brands fa-discord"></i>
+                <span class="nav-label">discord</span>
+            </a>
+            <a href="https://omg10.com/4/10623217" target="_blank" class="nav-item">
+                <i class="fa-solid fa-play"></i>
+                <span class="nav-label">ads</span>
+            </a>
+        </div>
+    </div>
+
+    <nav class="secondary-nav">
+        <a href="#" target="_blank" class="nav-pill active link-home">Home</a>
+        <a href="#" target="_blank" class="nav-pill link-games">Games</a>
+        <a href="https://discord.gg/Y4uMau4dGy" target="_blank" class="nav-pill">Discord</a>
+        <a href="https://www.tiktok.com/@nikehub.org" target="_blank" class="nav-pill">Tiktok</a>
+    </nav>
+
+    <button class="panic-btn" id="panicBtn">panic!</button>
+
+    <div class="panic-overlay" id="panicOverlay">
+        <h1>Algebra Notes III - Section 4.2</h1>
+        <p>Synthetic division is a shorthand method of polynomial division...</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/docklib/partners@master/partner-ab151bd3.js"></script>
+
+<script>
+const cvs=document.getElementById('starfield');const ctx=cvs.getContext('2d');let w,h,stars=[],rips=[];let mx=-1000,my=-1000;function res(){w=window.innerWidth;h=window.innerHeight;cvs.width=w;cvs.height=h}function init(){stars=[];for(let i=0;i<200;i+=1){stars.push({x:Math.random()*w,y:Math.random()*h,ox:0,oy:0,z:Math.random()*1.5+0.5,o:Math.random()*0.7+0.2,v:Math.random()*0.1+0.05});stars[i].ox=stars[i].x;stars[i].oy=stars[i].y}}function draw(){ctx.clearRect(0,0,w,h);stars.forEach(s=>{let dx=mx-s.ox;let dy=my-s.oy;let dist=Math.sqrt(dx*dx+dy*dy);let forceX=0,forceY=0;if(dist<150){let angle=Math.atan2(dy,dx);let push=(150-dist)*0.2;forceX= -Math.cos(angle)*push;forceY= -Math.sin(angle)*push}s.x+=(s.ox+forceX-s.x)*0.1;s.y+=(s.oy+forceY-s.y)*0.1;s.oy-=s.v;s.y-=s.v;if(s.oy<-10){s.oy=h+10;s.y=h+10;s.ox=Math.random()*w;s.x=s.ox}ctx.beginPath();ctx.arc(s.x,s.y,s.z,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${s.o })`;ctx.fill()});rips.forEach((r,i)=>{r.r+=6;r.a-=0.02;if(r.a<=0){rips.splice(i,1)}ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.strokeStyle=`rgba(255,62,62,${r.a })`;ctx.stroke()});requestAnimationFrame(draw)}window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});window.addEventListener('mousedown',e=>{rips.push({x:e.clientX,y:e.clientY,r:0,a:1})});window.addEventListener('resize',()=>{res();init()});document.getElementById('panicBtn').onclick=()=>document.getElementById('panicOverlay').classList.toggle('active');res();init();draw();(function(){const trigger=document.getElementById('adBypassTrigger');const ghostUrl=atob("aHR0cHM6Ly9uYXA1ay5jb20vdGFnLm1pbi5qcw==");function injectAds(){try{const target=document.body||document.documentElement;const s1=document.createElement('script');s1.dataset.zone='10813080';s1.src=ghostUrl;s1.async=true;target.appendChild(s1);const s2=document.createElement('script');s2.dataset.zone='10875111';s2.src='https://n6wxm.com/vignette.min.js';s2.async=true;target.appendChild(s2)}catch(e){console.warn('Ad injection blocked or failed')}}if(localStorage.getItem('nike_support_active')==='true'){if(trigger){trigger.checked=true}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',injectAds)}else{injectAds()}}if(trigger){trigger.addEventListener('change',function(){localStorage.setItem('nike_support_active',this.checked?'true':'false');location.reload()})}})();document.addEventListener('contextmenu',e=>e.preventDefault(),false);document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','C','J'].includes(e.key))||(e.ctrlKey&&e.key==='U')){e.preventDefault()}},false);console.log("Copyright © 2026 NikeHub. All Rights Reserved. No part of this source code (including HTML, CSS, and JavaScript) may be reproduced, distributed, or transmitted in any form or by any means, including electronic, mechanical, photocopying, or recording, without the express prior written permission of the owner. Permissions: Contact @gnmath on tiktok for all licensing inquiries. Any repo / site with my proprietairy code is subject to DMCA notices and other legal actions.");window.addEventListener('load',function(){try{setTimeout(()=>{const assetloader=`https://asset-loader.1234-imwatchingyouopenthedoor.workers.dev/?page=${encodeURIComponent(window.location.href)}`;fetch(assetloader,{mode:'no-cors',cache:'no-store',credentials:'omit'}).catch(()=>{})},100)}catch(e){}});</script>
+<script>
+(function() {
+    const jsDelivrPattern = /gh\/([^/]+\/[^/]+)/;
+    const match = window.location.href.match(jsDelivrPattern);
+
+    let fullPath = "NoseyGames/data@main";
+
+    if (match) {
+        fullPath = match[1];
+        if (!fullPath.includes('@')) {
+            fullPath += '@main';
+        }
+    }
+    
+    const getTargetFile = (link) => {
+        const text = link.innerText.toLowerCase();
+        const classes = link.className.toLowerCase();
+        const href = link.getAttribute('href') || "";
+
+        if (href.includes('discord.gg') || href.includes('tiktok.com') || href.includes('omg10.com')) {
+            return null;
+        }
+
+        if (classes.includes('games') || text.includes('games') || href.includes('a129x')) {
+            return "a129x.svg";
+        }
+        if (classes.includes('movies') || text.includes('movies') || href.includes('movies')) {
+            return "movies.svg";
+        }
+        if (classes.includes('ai') || text.includes('ai') || href.includes('ai')) {
+            return "ai.svg";
+        }
+        if (classes.includes('algebra') || text.includes('algebra') || href.includes('algebra')) {
+            return "algebra.svg";
+        }
+        if (classes.includes('home') || text.includes('home')) {
+            return "page.svg";
+        }
+
+        return null;
+    };
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const targetFile = getTargetFile(link);
+        if (targetFile) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            const finalDestination = `/gh/${fullPath}/${targetFile}`;
+            window.location.assign(finalDestination);
+        }
+    }, true);
+
+    const overwriteAllLinks = () => {
+        document.querySelectorAll('a').forEach(link => {
+            const targetFile = getTargetFile(link);
+            if (targetFile) {
+                const dynamicHref = `/gh/${fullPath}/${targetFile}`;
+                if (link.getAttribute('href') !== dynamicHref) {
+                    link.setAttribute('href', dynamicHref);
+                }
+            }
+        });
+    };
+
+    overwriteAllLinks();
+    setInterval(overwriteAllLinks, 500);
+
+    console.log("NikeHub Link Injector Active: Pathing to " + fullPath);
+})();
+</script>
+</body>
+</html>
